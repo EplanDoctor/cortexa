@@ -186,16 +186,21 @@
             width: 130px;
             height: 130px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #ec4899, #8b5cf6);
+            background: var(--bg-x);
             border: 4px solid var(--bg-x);
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 3.5rem;
-            font-weight: 800;
             position: absolute;
             top: -65px;
             left: 15px;
+            overflow: hidden;
+        }
+
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
 
         .profile-actions {
@@ -312,13 +317,18 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #ec4899, #8b5cf6);
+            background: var(--bg-x);
             display: flex;
             justify-content: center;
             align-items: center;
-            font-weight: 700;
-            font-size: 1.1rem;
             flex-shrink: 0;
+            overflow: hidden;
+        }
+        
+        .tweet-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
 
         .tweet-body {
@@ -467,7 +477,7 @@
 
             <!-- Profile Info -->
             <div class="profile-info-section">
-                <div class="profile-avatar">C</div>
+                <div class="profile-avatar"><img src="assets/logo.png" alt="CTX Logo"></div>
                 <div class="profile-actions">
                     <button class="btn-action"><i data-lucide="bell"></i></button>
                     <button class="btn-action btn-follow">Follow</button>
@@ -496,7 +506,7 @@
             <div class="tweets-feed">
                 <!-- Tweet 1 (Pinned) -->
                 <div class="tweet">
-                    <div class="tweet-avatar">C</div>
+                    <div class="tweet-avatar"><img src="assets/logo.png" alt="CTX Logo"></div>
                     <div class="tweet-body">
                         <div class="tweet-meta">
                             <strong>Cortexa Protocol</strong> <i data-lucide="badge-check" style="color: #d4af37; fill: #d4af37; width: 16px; height: 16px;"></i> <span>@CortexaToken · Pinned</span>
@@ -505,9 +515,9 @@
 
 Claim your **100 CTX welcome gift** instantly by connecting your Web3 wallet (SafePal, MetaMask, Trust Wallet) to our dashboard.
 
-⚡️ Plus, buy CTX with BNB today and get an **automatic 10% bonus** on top!
+⚡️ Plus, our Presale is live! Buy CTX directly from the smart contract at the rate of **1 BNB = 10,000 CTX** and get an **automatic 10% bonus** on top!
 
-Claim here 👉 [cortexa.io/dashboard](index.html#dashboard)</div>
+Claim here 👉 [https://eplandoctor.github.io/cortexa/web/index.html](https://eplandoctor.github.io/cortexa/web/index.html)</div>
                         <div class="tweet-actions">
                             <span><i data-lucide="message-square"></i> 1.2K</span>
                             <span><i data-lucide="repeat"></i> 4.8K</span>
@@ -519,7 +529,7 @@ Claim here 👉 [cortexa.io/dashboard](index.html#dashboard)</div>
 
                 <!-- Tweet 2 -->
                 <div class="tweet">
-                    <div class="tweet-avatar">C</div>
+                    <div class="tweet-avatar"><img src="assets/logo.png" alt="CTX Logo"></div>
                     <div class="tweet-body">
                         <div class="tweet-meta">
                             <strong>Cortexa Protocol</strong> <i data-lucide="badge-check" style="color: #d4af37; fill: #d4af37; width: 16px; height: 16px;"></i> <span>@CortexaToken · 3h</span>
@@ -529,10 +539,10 @@ Claim here 👉 [cortexa.io/dashboard](index.html#dashboard)</div>
 Our BEP-20 token contract is built using industry-standard @OpenZeppelin libraries to completely eliminate vulnerabilities.
 
 Total Supply: 1 Billion CTX
-Burn fee: 1.0%
-Marketing: 2.0%
+Burn fee: 1.0% (Deflationary)
+Locked Liquidity: 100% of Initial Pool
 
-Read details: [cortexa.io/tokenomics](index.html#tokenomics)</div>
+Read details: [https://eplandoctor.github.io/cortexa/web/index.html](https://eplandoctor.github.io/cortexa/web/index.html)</div>
                         <div class="tweet-actions">
                             <span><i data-lucide="message-square"></i> 245</span>
                             <span><i data-lucide="repeat"></i> 890</span>
