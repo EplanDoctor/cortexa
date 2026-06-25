@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cortexa (CTX) | The Intelligent Neural Layer for DeFi</title>
+    <meta name="description" content="Cortexa (CTX) is a high-speed, secure, and AI-driven utility token with built-in deflationary mechanics. Explore the future of decentralized finance.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/logo.png">
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+    <div class="bg-grid"></div>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="assets/logo.png" alt="Cortexa Logo" class="logo-icon" style="width: 24px; height: 24px; border-radius: 50%;">
+                <span>CORTEXA</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#about">About</a>
+                <a href="#tokenomics">Tokenomics</a>
+                <a href="#roadmap">Roadmap</a>
+                <a href="#security">Security</a>
+            </nav>
+            <div class="nav-actions">
+                <!-- Language Selector -->
+                <div class="lang-selector">
+                    <button class="lang-btn" id="lang-btn">
+                        <i data-lucide="languages" class="btn-icon"></i>
+                        <span id="current-lang-text">EN</span>
+                        <i data-lucide="chevron-down" class="btn-icon chevron"></i>
+                    </button>
+                    <div class="lang-dropdown" id="lang-dropdown">
+                        <button class="lang-option active" data-lang="en">🇬🇧 English</button>
+                        <button class="lang-option" data-lang="tr">🇹🇷 Türkçe</button>
+                    </div>
+                </div>
+                <button class="btn btn-secondary btn-connect" id="wallet-btn">
+                    <i data-lucide="wallet" class="btn-icon"></i>
+                    <span id="wallet-text">Connect Wallet</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section" id="about">
+            <div class="hero-content">
+                <div class="badge-container">
+                    <span class="badge">
+                        <i data-lucide="sparkles" class="badge-icon"></i>
+                        Next-Gen AI & DeFi Token
+                    </span>
+                </div>
+                <h1 class="hero-title">
+                    The Intelligent <br>
+                    <span class="gradient-text">Neural Layer</span> <br>
+                    of Decentralized Finance
+                </h1>
+                <p class="hero-description">
+                    Cortexa (CTX) combines advanced AI optimization with a highly secure, deflationary token model. Experience ultra-fast transactions, smart staking yields, and community governance.
+                </p>
+                <div class="hero-actions">
+                    <a href="#tokenomics" class="btn btn-primary">
+                        <span>Explore Tokenomics</span>
+                        <i data-lucide="arrow-right" class="btn-icon"></i>
+                    </a>
+                    <a href="https://github.com" target="_blank" class="btn btn-secondary">
+                        <i data-lucide="file-text" class="btn-icon"></i>
+                        <span>Whitepaper</span>
+                    </a>
+                </div>
+                
+                <!-- Quick stats -->
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-val">1B</span>
+                        <span class="stat-label">Total Supply</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-val" id="circulating-supply">400M</span>
+                        <span class="stat-label">Initial Circulating</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-val">1.0%</span>
+                        <span class="stat-label">Burn Fee</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Interactive Visual -->
+            <div class="hero-visual">
+                <div class="visual-container">
+                    <div class="glow-ring"></div>
+                    <div class="glow-ring glow-ring-2"></div>
+                    <!-- Custom Generated Token Asset -->
+                    <img src="assets/cortexa_hero.png" alt="Cortexa CTX Token Core" class="token-image">
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Section -->
+        <section class="section-container" id="dashboard">
+            <div class="section-header">
+                <h2 class="section-title" id="dash-title">Interactive Dashboard</h2>
+                <p class="section-subtitle" id="dash-subtitle">Claim your welcome tokens and purchase CTX directly with BNB to receive a 10% bonus.</p>
+            </div>
+
+            <div class="dashboard-grid">
+                <!-- Welcome Airdrop Card -->
+                <div class="dash-card glass-card">
+                    <div class="dash-card-header">
+                        <div class="card-icon-container cyan-glow">
+                            <i data-lucide="gift"></i>
+                        </div>
+                        <h3 id="airdrop-card-title">Welcome Airdrop</h3>
+                    </div>
+                    <p class="dash-card-desc" id="airdrop-card-desc">Connect your Web3 wallet to claim your 100 CTX welcome gift automatically. Available once per wallet.</p>
+                    <div class="airdrop-status-box">
+                        <span id="airdrop-status-label">Status:</span>
+                        <span class="status-badge status-disconnected" id="airdrop-status">Wallet Disconnected</span>
+                    </div>
+                    <button class="btn btn-primary w-full" id="claim-airdrop-btn" disabled>
+                        <i data-lucide="gift" class="btn-icon"></i>
+                        <span id="claim-btn-text">Claim 100 CTX</span>
+                    </button>
+                </div>
+
+                <!-- Token Purchase Card -->
+                <div class="dash-card glass-card">
+                    <div class="dash-card-header">
+                        <div class="card-icon-container pink-glow">
+                            <i data-lucide="coins"></i>
+                        </div>
+                        <h3 id="buy-card-title">Buy CTX Token</h3>
+                    </div>
+                    <p class="dash-card-desc" id="buy-card-desc">Purchase CTX with BNB. You will automatically receive a 10% bonus on top of your purchased amount!</p>
+                    <div class="buy-input-group">
+                        <div class="input-container">
+                            <label for="bnb-amount" id="bnb-label">BNB Amount</label>
+                            <input type="number" id="bnb-amount" placeholder="0.1" min="0.001" step="0.01" disabled>
+                        </div>
+                        <div class="arrow-container">
+                            <i data-lucide="arrow-right" class="arrow-icon"></i>
+                        </div>
+                        <div class="input-container">
+                            <label for="ctx-amount" id="ctx-label">CTX Received (+10% Bonus)</label>
+                            <input type="text" id="ctx-amount" placeholder="1,100" readonly>
+                        </div>
+                    </div>
+                    <button class="btn btn-secondary w-full" id="buy-token-btn" disabled>
+                        <i data-lucide="wallet" class="btn-icon"></i>
+                        <span id="buy-btn-text">Connect Wallet to Buy</span>
+                    </button>
+                </div>
+
+                <!-- Admin Panel (Only visible to Owner) -->
+                <div class="dash-card glass-card admin-card" id="admin-card" style="display: none; grid-column: span 2;">
+                    <div class="dash-card-header">
+                        <div class="card-icon-container violet-glow">
+                            <i data-lucide="shield-alert"></i>
+                        </div>
+                        <h3 id="admin-card-title">Contract Owner Settings</h3>
+                    </div>
+                    <p class="dash-card-desc" id="admin-card-desc">Logged in as owner. Manage rates and contract withdrawals.</p>
+                    <div class="admin-actions">
+                        <button class="btn btn-secondary" id="admin-set-rates-btn">
+                            <i data-lucide="settings" class="btn-icon"></i>
+                            <span id="admin-btn-rates">Set Rate to 10,000 CTX/BNB</span>
+                        </button>
+                        <button class="btn btn-secondary" id="admin-withdraw-bnb-btn">
+                            <i data-lucide="download" class="btn-icon"></i>
+                            <span id="admin-btn-bnb">Withdraw BNB</span>
+                        </button>
+                        <button class="btn btn-secondary" id="admin-withdraw-tokens-btn">
+                            <i data-lucide="coins" class="btn-icon"></i>
+                            <span id="admin-btn-tokens">Withdraw CTX</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tokenomics Section -->
+        <section class="section-container" id="tokenomics">
+            <div class="section-header">
+                <h2 class="section-title">Tokenomics & Allocation</h2>
+                <p class="section-subtitle">A balanced, secure, and sustainable token distribution model designed for long-term growth.</p>
+            </div>
+
+            <div class="tokenomics-grid">
+                <!-- Interactive Chart Representation -->
+                <div class="tokenomics-visual-card glass-card">
+                    <h3>Distribution Breakdown</h3>
+                    <div class="chart-container">
+                        <div class="allocation-bar-group">
+                            <div class="allocation-info">
+                                <span>Liquidity Pool (Locked)</span>
+                                <span class="alloc-val">40%</span>
+                            </div>
+                            <div class="bar-bg"><div class="bar-fill" style="width: 40%; background: var(--accent-cyan);"></div></div>
+                        </div>
+                        <div class="allocation-bar-group">
+                            <div class="allocation-info">
+                                <span>Staking & Rewards</span>
+                                <span class="alloc-val">20%</span>
+                            </div>
+                            <div class="bar-bg"><div class="bar-fill" style="width: 20%; background: var(--accent-violet);"></div></div>
+                        </div>
+                        <div class="allocation-bar-group">
+                            <div class="allocation-info">
+                                <span>Marketing & Growth</span>
+                                <span class="alloc-val">15%</span>
+                            </div>
+                            <div class="bar-bg"><div class="bar-fill" style="width: 15%; background: var(--accent-pink);"></div></div>
+                        </div>
+                        <div class="allocation-bar-group">
+                            <div class="allocation-info">
+                                <span>Core Development</span>
+                                <span class="alloc-val">15%</span>
+                            </div>
+                            <div class="bar-bg"><div class="bar-fill" style="width: 15%; background: #4f46e5;"></div></div>
+                        </div>
+                        <div class="allocation-bar-group">
+                            <div class="allocation-info">
+                                <span>Community & Airdrops</span>
+                                <span class="alloc-val">10%</span>
+                            </div>
+                            <div class="bar-bg"><div class="bar-fill" style="width: 10%; background: #3b82f6;"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Info Cards -->
+                <div class="tokenomics-info">
+                    <div class="feature-card glass-card">
+                        <div class="card-icon-container cyan-glow">
+                            <i data-lucide="flame"></i>
+                        </div>
+                        <div class="card-text">
+                            <h4>Deflationary Burn Mechanics</h4>
+                            <p>Every transaction triggers a 1.0% burn fee, permanently reducing the total supply of CTX and increasing scarcity over time.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-card glass-card">
+                        <div class="card-icon-container violet-glow">
+                            <i data-lucide="lock"></i>
+                        </div>
+                        <div class="card-text">
+                            <h4>Locked Liquidity</h4>
+                            <p>To ensure ecosystem trust, 100% of the initial liquidity pool tokens will be locked via smart contract for a minimum duration of 1 year.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-card glass-card">
+                        <div class="card-icon-container pink-glow">
+                            <i data-lucide="award"></i>
+                        </div>
+                        <div class="card-text">
+                            <h4>Staking Yields</h4>
+                            <p>Holders can stake their CTX tokens to receive up to 12.5% APY, secured directly by smart contracts with no centralized custody.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Roadmap Section -->
+        <section class="section-container" id="roadmap">
+            <div class="section-header">
+                <h2 class="section-title">Development Roadmap</h2>
+                <p class="section-subtitle">Our journey to establish Cortexa as the premier AI-driven blockchain standard.</p>
+            </div>
+
+            <div class="roadmap-timeline">
+                <div class="timeline-line"></div>
+
+                <div class="timeline-item glass-card left active">
+                    <div class="timeline-dot"></div>
+                    <span class="timeline-date">Q3 2026</span>
+                    <h3>Phase 1: Inception & Audits</h3>
+                    <p>Smart contract development (completed), thorough security audit by top-tier firms, local node testing, and website launch.</p>
+                </div>
+
+                <div class="timeline-item glass-card right">
+                    <div class="timeline-dot"></div>
+                    <span class="timeline-date">Q4 2026</span>
+                    <h3>Phase 2: Launch & Liquidity</h3>
+                    <p>Initial DEX Offering (IDO), list on PancakeSwap/Uniswap, lock initial liquidity, and release official staking platform.</p>
+                </div>
+
+                <div class="timeline-item glass-card left">
+                    <div class="timeline-dot"></div>
+                    <span class="timeline-date">Q1 2027</span>
+                    <h3>Phase 3: AI Integration</h3>
+                    <p>Deploy AI-optimized yield farming assistant on testnet, release the governance portal, and begin CoinMarketCap & CoinGecko fast-track listing.</p>
+                </div>
+
+                <div class="timeline-item glass-card right">
+                    <div class="timeline-dot"></div>
+                    <span class="timeline-date">Q2 2027</span>
+                    <h3>Phase 4: Global Ecosystem</h3>
+                    <p>CEX listings, cross-chain bridge implementation to other EVM networks, and expansion of utility partners.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Security Section -->
+        <section class="section-container" id="security">
+            <div class="section-header">
+                <h2 class="section-title">Verified & Secure</h2>
+                <p class="section-subtitle">We prioritize security, transparency, and safety above all else.</p>
+            </div>
+
+            <div class="security-grid">
+                <div class="security-card glass-card">
+                    <i data-lucide="shield-check" class="security-icon cyan-text"></i>
+                    <h4>Audited Contract</h4>
+                    <p>Developed using industry-standard OpenZeppelin contracts to eliminate potential exploit vectors and vulnerabilities.</p>
+                </div>
+                <div class="security-card glass-card">
+                    <i data-lucide="eye" class="security-icon violet-text"></i>
+                    <h4>Fully Transparent</h4>
+                    <p>Our source code is open, verified, and will be visible on BSCScan / Etherscan immediately post-deployment.</p>
+                </div>
+                <div class="security-card glass-card">
+                    <i data-lucide="key" class="security-icon pink-text"></i>
+                    <h4>Renounced Ownership</h4>
+                    <p>Post-deployment, ownership controls will be transferred to a decentralized governance multi-sig to prevent single points of failure.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Wallet Modal Simulation -->
+    <div class="modal" id="wallet-modal">
+        <div class="modal-content glass-card">
+            <button class="modal-close" id="modal-close-btn">&times;</button>
+            <h3>Connect to Web3</h3>
+            <p>Select your favorite Web3 wallet provider to interact with the Cortexa platform.</p>
+            <div class="wallet-options">
+                <button class="wallet-option-btn" data-wallet="metamask">
+                    <i data-lucide="chrome" class="wallet-opt-icon"></i>
+                    <span>MetaMask</span>
+                    <span class="wallet-badge">Popular</span>
+                </button>
+                <button class="wallet-option-btn" data-wallet="trustwallet">
+                    <i data-lucide="shield" class="wallet-opt-icon"></i>
+                    <span>Trust Wallet</span>
+                </button>
+                <button class="wallet-option-btn" data-wallet="coinbase">
+                    <i data-lucide="compass" class="wallet-opt-icon"></i>
+                    <span>Coinbase Wallet</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="logo">
+                    <img src="assets/logo.png" alt="Cortexa Logo" class="logo-icon" style="width: 24px; height: 24px; border-radius: 50%;">
+                    <span>CORTEXA</span>
+                </div>
+                <p>The next-generation AI-optimized blockchain ecosystem built for users.</p>
+            </div>
+            <div class="footer-links-group">
+                <div class="footer-col">
+                    <h5>Ecosystem</h5>
+                    <a href="#about">About</a>
+                    <a href="#tokenomics">Tokenomics</a>
+                    <a href="#roadmap">Roadmap</a>
+                </div>
+                <div class="footer-col">
+                    <h5>Community</h5>
+                    <a href="twitter.html" target="_blank">Twitter / X</a>
+                    <a href="telegram.html" target="_blank">Telegram</a>
+                </div>
+                <div class="footer-col">
+                    <h5>Developers</h5>
+                    <a href="https://github.com" target="_blank">GitHub</a>
+                    <a href="hardhat.config.js">Hardhat Config</a>
+                    <a href="contracts/CortexaToken.sol">Smart Contract</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Cortexa Protocol. All rights reserved. Built using EVM Smart Contracts.</p>
+        </div>
+    </footer>
+
+    <!-- Transaction Toast Alerts -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.7.0/ethers.umd.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cortexa Protocol (@CortexaToken) / X</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --bg-x: #000000;
+            --bg-card: #15181c;
+            --text-primary: #e7e9ea;
+            --text-secondary: #71767b;
+            --accent-blue: #1d9bf0;
+            --border-x: #2f3336;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-x);
+            font-family: 'Inter', sans-serif;
+            color: var(--text-primary);
+            display: flex;
+            justify-content: center;
+        }
+
+        .x-layout {
+            display: grid;
+            grid-template-columns: 275px 600px 350px;
+            gap: 0;
+            width: 100%;
+            max-width: 1250px;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Left */
+        .x-sidebar-left {
+            border-right: 1px solid var(--border-x);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .sidebar-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .logo-x {
+            font-size: 2rem;
+            font-weight: 800;
+            padding-left: 0.5rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-x span {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            transition: background 0.2s;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .menu-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .menu-item i {
+            width: 26px;
+            height: 26px;
+        }
+
+        .btn-tweet {
+            background-color: var(--accent-blue);
+            color: white;
+            border: none;
+            border-radius: 9999px;
+            padding: 0.9rem;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            text-align: center;
+            width: 100%;
+            margin-top: 1rem;
+            transition: background 0.2s;
+        }
+
+        .btn-tweet:hover {
+            background-color: #1a8cd8;
+        }
+
+        /* Center Feed */
+        .x-feed {
+            border-right: 1px solid var(--border-x);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Profile Header */
+        .profile-header {
+            padding: 0.5rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            border-bottom: 1px solid var(--border-x);
+            position: sticky;
+            top: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            z-index: 10;
+        }
+
+        .back-arrow {
+            cursor: pointer;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .profile-title h1 {
+            margin: 0;
+            font-size: 1.2rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .profile-title h1 .gold-badge {
+            color: #d4af37;
+            fill: #d4af37;
+        }
+
+        .profile-title span {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* Cover Image */
+        .cover-photo {
+            height: 200px;
+            background: linear-gradient(135deg, #0e0725, #042530);
+            position: relative;
+        }
+
+        .cover-grid {
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        /* Profile Bio */
+        .profile-info-section {
+            padding: 1rem;
+            position: relative;
+            border-bottom: 1px solid var(--border-x);
+        }
+
+        .profile-avatar {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ec4899, #8b5cf6);
+            border: 4px solid var(--bg-x);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3.5rem;
+            font-weight: 800;
+            position: absolute;
+            top: -65px;
+            left: 15px;
+        }
+
+        .profile-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.5rem;
+        }
+
+        .btn-action {
+            background: none;
+            border: 1px solid var(--border-x);
+            color: var(--text-primary);
+            border-radius: 9999px;
+            padding: 0.5rem 1rem;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-action:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .btn-follow {
+            background-color: var(--text-primary);
+            color: var(--bg-x);
+            border: none;
+        }
+
+        .btn-follow:hover {
+            background-color: #d7dbdc;
+        }
+
+        .profile-details {
+            margin-top: 2.5rem;
+        }
+
+        .profile-details h2 {
+            margin: 0;
+            font-size: 1.3rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .profile-details h2 i {
+            color: #d4af37;
+        }
+
+        .handle {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-top: 0.1rem;
+        }
+
+        .bio {
+            margin-top: 0.8rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .meta-row {
+            display: flex;
+            gap: 1rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-row span {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .meta-row i {
+            width: 16px;
+            height: 16px;
+        }
+
+        .follower-counts {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 0.8rem;
+            font-size: 0.9rem;
+        }
+
+        .follower-counts span {
+            color: var(--text-secondary);
+        }
+
+        .follower-counts strong {
+            color: var(--text-primary);
+        }
+
+        /* Tweets */
+        .tweet {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-x);
+            display: flex;
+            gap: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .tweet:hover {
+            background-color: rgba(255, 255, 255, 0.01);
+        }
+
+        .tweet-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ec4899, #8b5cf6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .tweet-body {
+            flex-grow: 1;
+        }
+
+        .tweet-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.95rem;
+        }
+
+        .tweet-meta strong {
+            color: var(--text-primary);
+        }
+
+        .tweet-meta span {
+            color: var(--text-secondary);
+        }
+
+        .tweet-content {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-top: 0.4rem;
+            white-space: pre-line;
+        }
+
+        .tweet-actions {
+            display: flex;
+            justify-content: space-between;
+            max-width: 425px;
+            margin-top: 0.8rem;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .tweet-actions span {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: color 0.2s;
+        }
+
+        .tweet-actions span:hover {
+            color: var(--accent-blue);
+        }
+
+        /* Sidebar Right */
+        .x-sidebar-right {
+            border-left: 1px solid var(--border-x);
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .card-right {
+            background-color: var(--bg-card);
+            border-radius: 16px;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .card-right h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            font-weight: 800;
+        }
+
+        .trending-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+            cursor: pointer;
+        }
+
+        .trending-item span {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .trending-item strong {
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 1024px) {
+            .x-layout {
+                grid-template-columns: 80px 1fr;
+            }
+            .x-sidebar-right, .menu-item span, .btn-tweet span {
+                display: none;
+            }
+            .btn-tweet {
+                padding: 0.5rem;
+                border-radius: 50%;
+                width: 45px;
+                height: 45px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="x-layout">
+        <!-- Sidebar Left -->
+        <aside class="x-sidebar-left">
+            <div class="sidebar-menu">
+                <a href="index.html" class="logo-x">
+                    <i data-lucide="cpu"></i>
+                    <span>Cortexa</span>
+                </a>
+                <a href="index.html" class="menu-item">
+                    <i data-lucide="home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="index.html#dashboard" class="menu-item">
+                    <i data-lucide="gift"></i>
+                    <span>Airdrop</span>
+                </a>
+                <a href="index.html#tokenomics" class="menu-item">
+                    <i data-lucide="pie-chart"></i>
+                    <span>Tokenomics</span>
+                </a>
+            </div>
+            <div></div>
+        </aside>
+
+        <!-- Center Feed -->
+        <main class="x-feed">
+            <!-- Header -->
+            <div class="profile-header">
+                <a href="index.html" class="back-arrow"><i data-lucide="arrow-left"></i></a>
+                <div class="profile-title">
+                    <h1>Cortexa Protocol <i data-lucide="badge-check" style="color: #d4af37; fill: #d4af37;"></i></h1>
+                    <span>1,824 Tweets</span>
+                </div>
+            </div>
+
+            <!-- Cover Photo -->
+            <div class="cover-photo">
+                <div class="cover-grid"></div>
+            </div>
+
+            <!-- Profile Info -->
+            <div class="profile-info-section">
+                <div class="profile-avatar">C</div>
+                <div class="profile-actions">
+                    <button class="btn-action"><i data-lucide="bell"></i></button>
+                    <button class="btn-action btn-follow">Follow</button>
+                </div>
+
+                <div class="profile-details">
+                    <h2>Cortexa Protocol <i data-lucide="badge-check" style="color: #d4af37; fill: #d4af37; width: 20px; height: 20px; vertical-align: middle;"></i></h2>
+                    <div class="handle">@CortexaToken</div>
+                    
+                    <p class="bio">The Intelligent Neural Layer of Decentralized Finance. Powered by AI and designed for high efficiency. Official BEP-20 Standard. 🤖🚀</p>
+                    
+                    <div class="meta-row">
+                        <span><i data-lucide="map-pin"></i> Binance Smart Chain</span>
+                        <span><i data-lucide="link"></i><a href="index.html" style="color: var(--accent-blue); text-decoration: none;">cortexa.io</a></span>
+                        <span><i data-lucide="calendar"></i> Joined June 2026</span>
+                    </div>
+
+                    <div class="follower-counts">
+                        <span><strong>128</strong> Following</span>
+                        <span><strong>284.5K</strong> Followers</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tweets Feed -->
+            <div class="tweets-feed">
+                <!-- Tweet 1 (Pinned) -->
+                <div class="tweet">
+                    <div class="tweet-avatar">C</div>
+                    <div class="tweet-body">
+                        <div class="tweet-meta">
+                            <strong>Cortexa Protocol</strong> <i data-lucide="badge-check" style="color: #d4af37; fill: #d4af37; width: 16px; height: 16px;"></i> <span>@CortexaToken · Pinned</span>
+                        </div>
+                        <div class="tweet-content">🎁 **CORTEXA (CTX) WELCOME AIRDROP IS NOW LIVE!**
+
+Claim your **100 CTX welcome gift** instantly by connecting your Web3 wallet (SafePal, MetaMask, Trust Wallet) to our dashboard.
+
+⚡️ Plus, buy CTX with BNB today and get an **automatic 10% bonus** on top!
+
+Claim here 👉 [cortexa.io/dashboard](index.html#dashboard)</div>
+                        <div class="tweet-actions">
+                            <span><i data-lucide="message-square"></i> 1.2K</span>
+                            <span><i data-lucide="repeat"></i> 4.8K</span>
+                            <span><i data-lucide="heart"></i> 12K</span>
+                            <span><i data-lucide="share"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tweet 2 -->
+                <div class="tweet">
+                    <div class="tweet-avatar">C</div>
+                    <div class="tweet-body">
+                        <div class="tweet-meta">
+                            <strong>Cortexa Protocol</strong> <i data-lucide="badge-check" style="color: #d4af37; fill: #d4af37; width: 16px; height: 16px;"></i> <span>@CortexaToken · 3h</span>
+                        </div>
+                        <div class="tweet-content">🔒 Ecosystem safety is our #1 priority.
+
+Our BEP-20 token contract is built using industry-standard @OpenZeppelin libraries to completely eliminate vulnerabilities.
+
+Total Supply: 1 Billion CTX
+Burn fee: 1.0%
+Marketing: 2.0%
+
+Read details: [cortexa.io/tokenomics](index.html#tokenomics)</div>
+                        <div class="tweet-actions">
+                            <span><i data-lucide="message-square"></i> 245</span>
+                            <span><i data-lucide="repeat"></i> 890</span>
+                            <span><i data-lucide="heart"></i> 3.4K</span>
+                            <span><i data-lucide="share"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Sidebar Right -->
+        <aside class="x-sidebar-right">
+            <div class="card-right">
+                <h3>What's happening</h3>
+                <div class="trending-item">
+                    <span>Trending in Tech</span>
+                    <strong>#CortexaAirdrop</strong>
+                    <span>42.5K Posts</span>
+                </div>
+                <div class="trending-item">
+                    <span>Trending in DeFi</span>
+                    <strong>#BNBChain</strong>
+                    <span>128.4K Posts</span>
+                </div>
+                <div class="trending-item">
+                    <span>Trending in Crypto</span>
+                    <strong>$CTX</strong>
+                    <span>18.9K Posts</span>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

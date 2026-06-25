@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cortexa (CTX) | Telegram Channel Preview</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --bg-tg: #0e1621;
+            --bg-chat: #182533;
+            --bg-active: #2b5278;
+            --text-primary: #f5f5f5;
+            --text-secondary: #7f91a4;
+            --accent-blue: #5288c1;
+            --border-tg: #101924;
+            --msg-in: #182533;
+            --msg-out: #2b5278;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-tg);
+            font-family: 'Inter', sans-serif;
+            color: var(--text-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .tg-container {
+            width: 90%;
+            max-width: 800px;
+            height: 90vh;
+            background-color: var(--bg-chat);
+            border-radius: 16px;
+            border: 1px solid var(--border-tg);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Header */
+        .tg-header {
+            background-color: var(--bg-chat);
+            border-bottom: 1px solid var(--border-tg);
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .channel-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .channel-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #06b6d4, #8b5cf6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .channel-meta h2 {
+            margin: 0;
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .channel-meta .badge {
+            color: var(--accent-blue);
+            width: 16px;
+            height: 16px;
+        }
+
+        .channel-meta span {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .btn-back {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: background 0.2s;
+        }
+
+        .btn-back:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Chat Area */
+        .tg-chat {
+            flex-grow: 1;
+            padding: 1.5rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            background-color: var(--bg-tg);
+        }
+
+        /* Messages */
+        .message-bubble {
+            background-color: var(--msg-in);
+            border-radius: 12px;
+            max-width: 85%;
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            position: relative;
+            align-self: flex-start;
+        }
+
+        .message-header {
+            font-weight: 600;
+            color: var(--accent-blue);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .message-content {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            white-space: pre-line;
+        }
+
+        .message-meta {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        .tg-footer {
+            background-color: var(--bg-chat);
+            border-top: 1px solid var(--border-tg);
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .btn-join {
+            background-color: var(--accent-blue);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 0.8rem 3rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-join:hover {
+            background-color: #4373a6;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="tg-container">
+        <!-- Header -->
+        <header class="tg-header">
+            <div class="channel-info">
+                <div class="channel-avatar">C</div>
+                <div class="channel-meta">
+                    <h2>Cortexa Official <i data-lucide="badge-check" class="badge"></i></h2>
+                    <span>142.5K subscribers</span>
+                </div>
+            </div>
+            <a href="index.html" class="btn-back">
+                <i data-lucide="arrow-left"></i>
+                Back to Website
+            </a>
+        </header>
+
+        <!-- Chat Area -->
+        <main class="tg-chat">
+            <!-- Message 1 -->
+            <div class="message-bubble">
+                <div class="message-header">Cortexa Official</div>
+                <div class="message-content">🤖 Welcome to the official **Cortexa (CTX)** Telegram Channel!
+
+Cortexa represents the next generation of AI-optimized utilities on BNB Smart Chain. Here, you'll get the latest announcements, updates, and core releases.
+
+🌟 **Core Features:**
+• Deflationary Mechanics: 1.0% burn fee on transfers
+• Marketing Support: 2.0% marketing tax
+• Smart Contract audited and verified!
+
+Stay tuned for exciting announcements!</div>
+                <div class="message-meta">
+                    <span>11:15 AM</span>
+                    <i data-lucide="check"></i>
+                </div>
+            </div>
+
+            <!-- Message 2 -->
+            <div class="message-bubble">
+                <div class="message-header">Cortexa Official</div>
+                <div class="message-content">🎁 **CORTEXA (CTX) WELCOME AIRDROP IS NOW LIVE!**
+
+We are thrilled to launch our community distribution! Connect your Web3 wallet (SafePal, MetaMask, Trust Wallet) to our portal and instantly claim your **100 CTX welcome gift**.
+
+👉 **Claim Portal:** [cortexa.io/airdrop](index.html#dashboard)
+
+Additionally, anyone buying CTX with BNB through our official sale dashboard will receive an **automatic 10% bonus tokens** credited instantly to their address. 
+
+Let's build the smartest layer of DeFi together! 🚀</div>
+                <div class="message-meta">
+                    <span>11:18 AM</span>
+                    <i data-lucide="check"></i>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="tg-footer">
+            <button class="btn-join">Join Channel</button>
+        </footer>
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
